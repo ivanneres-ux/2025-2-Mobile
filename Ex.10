@@ -23,7 +23,7 @@ void main() {
 
     // Verifica se acertou
     if (palpite == numeroSecreto) {
-      print('\n🎉 Parabéns! Você acertou o número em $tentativas tentativa(s).');
+      print('\n Parabéns! Você acertou o número em $tentativas tentativa(s).');
     } else {
       // Usa operador ternário para dar dica
       String dica = palpite > numeroSecreto ? 'Muito alto' : 'Muito baixo';
