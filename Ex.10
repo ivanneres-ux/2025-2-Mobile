@@ -19,7 +19,6 @@ void main() {
       continue;
     }
 
-    // Verifica se acertou
     if (palpite == numeroSecreto) {
       print('\n Parabéns! Você acertou o número em $tentativas tentativa(s).');
     } else {
