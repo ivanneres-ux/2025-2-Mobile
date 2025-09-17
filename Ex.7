@@ -1,0 +1,56 @@
+import 'dart:io';
+
+void main() {
+  double saldo = 1000.00;
+  bool continuar = true;
+
+  while (continuar) {
+    print('\n=== Caixa Eletrônico ===');
+    print('1 - Ver Saldo');
+    print('2 - Realizar Saque');
+    print('3 - Realizar Depósito');
+    print('4 - Sair');
+    stdout.write('Escolha uma opção: ');
+    int? opcao = int.tryParse(stdin.readLineSync() ?? '');
+
+    switch (opcao) {
+      case 1:
+        print('\nSeu saldo atual é: R\$ ${saldo.toStringAsFixed(2)}');
+        break;
+
+      case 2:
+        stdout.write('\nDigite o valor para saque: R\$ ');
+        double? saque = double.tryParse(stdin.readLineSync() ?? '');
+        if (saque == null || saque <= 0) {
+          print('Valor inválido.');
+        } else if (saque > saldo) {
+          print('Saldo insuficiente.');
+        } else {
+          saldo -= saque;
+          print('Saque realizado com sucesso.');
+          print('Saldo atualizado: R\$ ${saldo.toStringAsFixed(2)}');
+        }
+        break;
+
+      case 3:
+        stdout.write('\nDigite o valor para depósito: R\$ ');
+        double? deposito = double.tryParse(stdin.readLineSync() ?? '');
+        if (deposito == null || deposito <= 0) {
+          print('Valor inválido.');
+        } else {
+          saldo += deposito;
+          print('Depósito realizado com sucesso.');
+          print('Saldo atualizado: R\$ ${saldo.toStringAsFixed(2)}');
+        }
+        break;
+
+      case 4:
+        print('\nEncerrando o sistema. Obrigado por utilizar o caixa eletrônico!');
+        continuar = false;
+        break;
+
+      default:
+        print('\nOpção inválida. Tente novamente.');
+    }
+  }
+}

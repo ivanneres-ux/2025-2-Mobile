@@ -1,0 +1,44 @@
+import 'dart:io';
+
+void main() {
+  // Solicita os três lados do triângulo
+  stdout.write('Digite o primeiro lado: ');
+  double? lado1 = double.tryParse(stdin.readLineSync() ?? '');
+
+  stdout.write('Digite o segundo lado: ');
+  double? lado2 = double.tryParse(stdin.readLineSync() ?? '');
+
+  stdout.write('Digite o terceiro lado: ');
+  double? lado3 = double.tryParse(stdin.readLineSync() ?? '');
+
+  // Verifica se os valores são válidos
+  if (lado1 == null || lado2 == null || lado3 == null ||
+      lado1 <= 0 || lado2 <= 0 || lado3 <= 0) {
+    print('\nValores inválidos. Todos os lados devem ser números positivos.');
+    return;
+  }
+
+  // Verifica se os lados formam um triângulo
+  bool formaTriangulo = 
+      lado1 + lado2 > lado3 &&
+      lado1 + lado3 > lado2 &&
+      lado2 + lado3 > lado1;
+
+  if (!formaTriangulo) {
+    print('\nOs valores informados não formam um triângulo.');
+    return;
+  }
+
+  // Classifica o triângulo
+  String tipo;
+  if (lado1 == lado2 && lado2 == lado3) {
+    tipo = 'Equilátero';
+  } else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
+    tipo = 'Isósceles';
+  } else {
+    tipo = 'Escaleno';
+  }
+
+  // Exibe o resultado
+  print('\nOs lados formam um triângulo do tipo: $tipo');
+}

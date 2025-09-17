@@ -1,0 +1,22 @@
+import 'dart:io';
+
+void main() {
+  // Solicita o valor da compra ao usuário
+  stdout.write('Digite o valor da compra: R\$ ');
+  double? valorCompra = double.tryParse(stdin.readLineSync() ?? '');
+
+  if (valorCompra == null) {
+    print('Valor inválido. Por favor, insira um número.');
+    return;
+  }
+
+  // Verifica se o valor é maior que R$ 100,00
+  if (valorCompra > 100.0) {
+    double desconto = valorCompra * 0.10;
+    double valorFinal = valorCompra - desconto;
+    print('Você recebeu 10% de desconto!');
+    print('Valor final da compra: R\$ ${valorFinal.toStringAsFixed(2)}');
+  } else {
+    print('Valor da compra: R\$ ${valorCompra.toStringAsFixed(2)}');
+  }
+}

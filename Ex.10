@@ -1,0 +1,33 @@
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  // Gera um número aleatório entre 1 e 100
+  int numeroSecreto = Random().nextInt(100) + 1;
+  int? palpite;
+  int tentativas = 0;
+
+  print('=== Jogo de Adivinhação ===');
+  print('Tente adivinhar o número entre 1 e 100.');
+
+  // Loop até o usuário acertar
+  do {
+    stdout.write('\nDigite seu palpite: ');
+    palpite = int.tryParse(stdin.readLineSync() ?? '');
+    tentativas++;
+
+    if (palpite == null || palpite < 1 || palpite > 100) {
+      print('Por favor, digite um número válido entre 1 e 100.');
+      continue;
+    }
+
+    // Verifica se acertou
+    if (palpite == numeroSecreto) {
+      print('\n🎉 Parabéns! Você acertou o número em $tentativas tentativa(s).');
+    } else {
+      // Usa operador ternário para dar dica
+      String dica = palpite > numeroSecreto ? 'Muito alto' : 'Muito baixo';
+      print(dica);
+    }
+  } while (palpite != numeroSecreto);
+}

@@ -1,0 +1,33 @@
+import 'dart:io';
+
+void main() {
+  // Solicita as duas notas do aluno
+  stdout.write('Digite a primeira nota: ');
+  double? nota1 = double.tryParse(stdin.readLineSync() ?? '');
+
+  stdout.write('Digite a segunda nota: ');
+  double? nota2 = double.tryParse(stdin.readLineSync() ?? '');
+
+  // Verifica se as notas são válidas
+  if (nota1 == null || nota2 == null || nota1 < 0 || nota2 < 0 || nota1 > 10 || nota2 > 10) {
+    print('Notas inválidas. Digite valores entre 0 e 10.');
+    return;
+  }
+
+  // Calcula a média
+  double media = (nota1 + nota2) / 2;
+
+  // Determina a situação do aluno
+  String situacao;
+  if (media >= 7.0) {
+    situacao = 'Aprovado';
+  } else if (media >= 4.0) {
+    situacao = 'Recuperação';
+  } else {
+    situacao = 'Reprovado';
+  }
+
+  // Exibe o resultado
+  print('\nMédia final: ${media.toStringAsFixed(2)}');
+  print('Situação: $situacao');
+}

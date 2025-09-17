@@ -1,0 +1,35 @@
+import 'dart:io';
+
+void main() {
+  // Solicita o salário mensal do usuário
+  stdout.write('Digite seu salário mensal (R\$): ');
+  double? salario = double.tryParse(stdin.readLineSync() ?? '');
+
+  // Verifica se o valor é válido
+  if (salario == null || salario < 0) {
+    print('Valor inválido. Digite um número positivo.');
+    return;
+  }
+
+  double imposto;
+
+  // Calcula o imposto com base nas faixas
+  if (salario <= 1903.98) {
+    imposto = 0.0;
+  } else if (salario <= 2826.65) {
+    imposto = salario * 0.075;
+  } else if (salario <= 3751.05) {
+    imposto = salario * 0.15;
+  } else if (salario <= 4664.68) {
+    imposto = salario * 0.225;
+  } else {
+    imposto = salario * 0.275;
+  }
+
+  // Exibe o resultado
+  if (imposto == 0.0) {
+    print('\nVocê está isento de imposto de renda.');
+  } else {
+    print('\nImposto de renda a pagar: R\$ ${imposto.toStringAsFixed(2)}');
+  }
+}
