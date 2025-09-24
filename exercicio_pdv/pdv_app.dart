@@ -24,5 +24,11 @@ class PDVapp{
                 continuar = false;
             }
             }
+            if(carrinho.estaVazio()){
+                print ('\nNenhum produto foi adicionado ao carrinho.');
+                print ('\nObrigado por usar o sistema PDV');
+            } else{
+                exibirResultado();
+            }
         }
     }
