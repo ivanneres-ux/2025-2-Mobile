@@ -1,4 +1,4 @@
-class produtos{
+class Produto{
     String nome;
     double valorUnitario;
 
@@ -6,6 +6,7 @@ class produtos{
 
     @override
     String toString(){
-        return 'Produto: $nome - Valor: R\$ ${valorUnitario.toStringAsFixed(2)}';
+        return 'Produto: $nome - 
+        Valor: R\$ ${valorUnitario.toStringAsFixed(2)}';
     }
 }
