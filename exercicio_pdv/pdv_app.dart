@@ -31,4 +31,22 @@ class PDVapp{
                 exibirResultado();
             }
         }
+        ItemCompra lerDadosProduto(){
+            print ('\nNome do produto:');
+            String nome - stdin.readLineSync()?? '';
+
+            double valor = 0;
+            bool valorValido = false;
+
+            while(valorValido){
+                print('\nValor unitário:');
+                String input = stdin.readLineSync() ?? '0';
+                valorUnitario = double.parse(input.replaceAll(',','.'));
+                if(valorUnitario <=0){
+                    print('\nValor deve ser maior que zero.');
+                } else {
+                    valorValido = true;
+                }
+            }
+        }
     }
